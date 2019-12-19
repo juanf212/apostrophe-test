@@ -1,0 +1,44 @@
+{% extends "layout.html" %} {% block title %}Home{% endblock %} {% block main %}
+<div class="main-content">
+  <ul class="tabs">
+    {% for tab in data.home._children %}
+    <li
+      class="
+      {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %}
+      current
+      {% endif %}
+    "
+    >
+      <a href="{{tab.url}}">{{tab.title}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <!--   <ul class="tabs">
+    {% for tab in data.home._children %}
+    <li>
+      <a href="{{ tab._url }}">{{ tab.title }}</a>
+      {% if tab._children.length %}
+      <ul>
+        {% for child in tab._children %}
+        <li><a href="{{ child._url }}">{{ child.title }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul> -->
+  <h3>
+    Hello world! {% if not data.user %}
+    <a class="login-link" href="/login">Login</a>
+    {% endif %}
+  </h3>
+  <p>
+    This is a very barebones Apostrophe project. Now, get to work and make a
+    real website!
+  </p>
+  {{ apos.area(data.page, 'body', { widgets: { 'apostrophe-images': { size:
+  'full' }, 'apostrophe-rich-text': { toolbar: [ 'Styles', 'Bold', 'Italic',
+  'Link', 'Unlink' ], styles: [ { name: 'Heading', element: 'h3' }, { name:
+  'Subheading', element: 'h4' }, { name: 'Paragraph', element: 'p' } ] } } }) }}
+</div>
+{% endblock %}

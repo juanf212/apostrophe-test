@@ -1,0 +1,11 @@
+{% extends "layout.html" %} {% block main %}
+
+<div class="main-content">
+  <h2><a href="{{ data.home._url }}">{{ data.home.title }}</a></h2>
+  {{ apos.singleton(data.page, 'textBlock', 'apostrophe-rich-text', { toolbar: [
+  'Bold', 'Italic'] }) }} {{ apos.area(data.page, 'body', { widgets: {
+  'apostrophe-rich-text': { toolbar: ['Bold', 'Italic'] }, 'apostrophe-images':
+  { size: 'full' } } }) }}
+</div>
+
+{% endblock %}
